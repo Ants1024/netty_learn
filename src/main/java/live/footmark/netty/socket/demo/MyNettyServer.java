@@ -14,7 +14,6 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  **/
 public class MyNettyServer {
 
-
     public static void main (String[] args) throws InterruptedException {
         //请求接收者
         EventLoopGroup boosGroup = new NioEventLoopGroup();
