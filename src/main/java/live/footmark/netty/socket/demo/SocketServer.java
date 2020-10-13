@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * @author: wanshubin
  * @create: 2020-07-02 20:26
  **/
-public class MyNettyServer {
+public class SocketServer {
 
     public static void main (String[] args) throws InterruptedException {
         //请求接收者
@@ -26,7 +26,7 @@ public class MyNettyServer {
 
             //服务配置
             serverBootstrap.group(boosGroup,workerGroup).
-                    channel(NioServerSocketChannel.class).childHandler(null);
+                    channel(NioServerSocketChannel.class).childHandler(new SocketServerInitializer());
             //绑定端口
             ChannelFuture channelFuture = serverBootstrap.bind(8808).sync();
             //监听服务关闭
