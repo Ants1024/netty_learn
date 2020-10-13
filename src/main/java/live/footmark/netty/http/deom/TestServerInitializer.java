@@ -23,7 +23,7 @@ public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch){
         ChannelPipeline pipeline = ch.pipeline();
-        //HttpServerCodec() 处理请求与响应的加解码
+        //HttpServerCodec() 处理请求与响应的加解码  是对 HttpRequestDecoder  HttpResponseEncoder的一个结合
         pipeline.addLast("httpServerCodec",new HttpServerCodec());
 
         //请求处理
