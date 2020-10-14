@@ -15,8 +15,8 @@ public class SockentClienthandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         System.out.println("服务器ip："+ctx.channel().remoteAddress());
-        System.out.println("client output"+msg);
-        ctx.writeAndFlush("from client"+LocalTime.now());
+        System.out.println("client output "+msg);
+        ctx.writeAndFlush("from client "+LocalTime.now());
     }
 
     @Override

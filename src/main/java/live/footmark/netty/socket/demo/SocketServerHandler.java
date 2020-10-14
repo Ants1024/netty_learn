@@ -14,11 +14,15 @@ import java.util.UUID;
 public class SocketServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.out.println("ip:"+ctx.channel().remoteAddress());
-        System.out.println("content："+msg);
-        ctx.writeAndFlush("from server"+UUID.randomUUID());
+        System.out.println("ip: "+ctx.channel().remoteAddress());
+        System.out.println("content "+msg);
+        ctx.writeAndFlush("from server "+UUID.randomUUID());
     }
 
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) {
+        ctx.channel().writeAndFlush("hell");
+    }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
