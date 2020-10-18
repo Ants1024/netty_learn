@@ -1,4 +1,4 @@
-package live.footmark.netty.socket.demo.client;
+package live.footmark.netty.socket.demo.hell.socket.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

@@ -1,4 +1,4 @@
-package live.footmark.netty.socket.demo;
+package live.footmark.netty.socket.demo.hell.socket.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

@@ -1,4 +1,4 @@
-package live.footmark.netty.socket.demo.client;
+package live.footmark.netty.socket.demo.hell.socket.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -11,11 +11,11 @@ import io.netty.util.CharsetUtil;
 
 /**
  * @program: netty_learn
- * @description:
+ * @description: socket 通道初始化器
  * @author: wanshubin
- * @create: 2020-10-13 21:50
+ * @create: 2020-10-13 21:12
  **/
-public class SocketClientInitializer extends ChannelInitializer<SocketChannel> {
+public class SocketServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
@@ -24,6 +24,6 @@ public class SocketClientInitializer extends ChannelInitializer<SocketChannel> {
         channelPipeline.addLast(new LengthFieldPrepender(4));
         channelPipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         channelPipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
-        channelPipeline.addLast(new SockentClienthandler());
+        channelPipeline.addLast(new SocketServerHandler());
     }
 }

@@ -1,4 +1,4 @@
-package live.footmark.netty.socket.demo.client;
+package live.footmark.netty.socket.demo.hell.socket.client;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -11,7 +11,7 @@ import java.time.LocalTime;
  * @author: wanshubin
  * @create: 2020-10-13 21:52
  **/
-public class SockentClienthandler extends SimpleChannelInboundHandler<String> {
+public class SocketClientHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         System.out.println("服务器ip："+ctx.channel().remoteAddress());
