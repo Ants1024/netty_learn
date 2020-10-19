@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webSocket客户端</title>
+</head>
+<body>
+<script type="text/javascript">
+    var webSocket=null;
+
+    if(window.Worker){
+        webSocket = new WebSocket("ws://localhost:8899/test");
+        //服务器响应触发
+        webSocket.onmessage=function (event) {
+            debugger;
+            document.getElementById("responseText").value += event.data+"\n";
+        }
+        //通道已连接触发
+        webSocket.onopen=function (event) {
+            document.getElementById("responseText").value="连接已开启\n";
+        }
+        //通道关闭触发
+        webSocket.onclose=function (event) {
+            document.getElementById("responseText").value="连接已关闭\n";
+        }
+    }else{
+        alert("不支持webSocket")
+    }
+
+    function send(massage) {
+        if(!window.WebSocket){
+            return;
+        }
+        //判断通道是否已开启
+        if (webSocket.readyState== WebSocket.OPEN){
+            webSocket.send(massage);
+        }else{
+            alert("连接未建立");
+        }
+    }
+
+
+
+</script>
+
+
+<form onsubmit="return false;">
+    <textarea id="message" style="width: 400px;height: 300px"></textarea>
+    <input type="button" value="发送数据" onclick="send(this.form.message.value)">
+    <h3>服务端输出：</h3>
+    <textarea id ="responseText" style="width: 400px;height: 300px"></textarea>
+    <input type="button" onclick="javascript: document.getElementById('responseText').value=''" value="清空数据">
+</form>
+
+
+
+</body>
+</html>
