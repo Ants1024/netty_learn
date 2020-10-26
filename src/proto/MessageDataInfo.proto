@@ -1,0 +1,47 @@
+syntax = "proto2";
+
+package live.footmark.proto;
+
+option  java_package = "live.footmark.proto";
+
+option  java_outer_classname="MessageDataInfo";
+
+message DataInfo{
+
+    //利于枚举来区分消息的类型
+    enum DataType{
+        person_type = 1;
+        dog_type = 2;
+        cat_type = 3;
+    }
+    //required 该参数是必须设置的
+    required DataType  data_type = 1;
+
+    // 如果您有一个包含许多可选字段的消息，并且最多同时设置一个字段，则可以使用one-of特性强制执行此行为并节省内存
+    // 设置其中一个的任何成员将自动清除所有其他成员
+    oneof DataBody{
+        Person person = 2;
+        Dog dog = 3;
+        Cat cat = 4;
+    }
+
+}
+
+message Person{
+    required string name = 1 ;
+    required int32 id = 2 ;
+    //  optional 可选择的
+    optional string email = 3;
+}
+
+message Dog{
+    required string name = 1 ;
+    required int32 id = 2 ;
+    optional string email = 3;
+}
+
+message Cat{
+    required string name = 1 ;
+    required int32 id = 2 ;
+    optional string email = 3;
+}

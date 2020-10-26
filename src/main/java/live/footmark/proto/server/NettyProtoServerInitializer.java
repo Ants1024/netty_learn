@@ -7,7 +7,7 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import live.footmark.proto.AddressBookProto;
+import live.footmark.proto.MessageDataInfo;
 
 /**
  * @program: netty_learn
@@ -22,7 +22,7 @@ public class NettyProtoServerInitializer extends ChannelInitializer<NioSocketCha
         //对protobuf协议的的消息头上加上一个长度为32的整形字段，用于标志这个消息的长度
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
         //将proto协议传输的二进制数据解码成对应的对象，该对象必须是使用protoc编译.proto文件得到的
-        pipeline.addLast(new ProtobufDecoder(AddressBookProto.Person.getDefaultInstance()));
+        pipeline.addLast(new ProtobufDecoder(MessageDataInfo.DataInfo.getDefaultInstance()));
         //针对protobuf协议的 ProtobufVarint32LengthFieldPrepender()所加的长度属性的解码器
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new ProtobufEncoder());
