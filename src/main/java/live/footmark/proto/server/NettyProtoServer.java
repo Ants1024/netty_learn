@@ -18,18 +18,18 @@ public class NettyProtoServer {
 
     public static void main (String[] args) throws Exception{
         EventLoopGroup bossEventGroup = new NioEventLoopGroup();
-        NioEventLoopGroup workerEventGruop = new NioEventLoopGroup();
+        NioEventLoopGroup workerEventGroup = new NioEventLoopGroup();
 
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
-            serverBootstrap.group(bossEventGroup, workerEventGruop).
+            serverBootstrap.group(bossEventGroup, workerEventGroup).
                     channel(NioServerSocketChannel.class).
                     handler(new LoggingHandler(LogLevel.INFO)).childHandler(new NettyProtoServerInitializer());
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
         }finally {
             bossEventGroup.shutdownGracefully();
-            workerEventGruop.shutdownGracefully();
+            workerEventGroup.shutdownGracefully();
         }
 
 
