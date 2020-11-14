@@ -5,7 +5,7 @@ typedef i32 int
 typedef i64 long
 
 typedef string String
-
+//生成java代码    thrift --gen java src/thrift/Person.thrift
 struct Person {
     1: optional int id,
     2: optional String name,
